@@ -1,0 +1,202 @@
+{
+	"basePath": "/api",
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {
+		"Book": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double"
+				},
+				"title": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"id",
+				"title"
+			],
+			"type": "object",
+			"additionalProperties": true
+		}
+	},
+	"info": {
+		"title": "Express serverless swagger API",
+		"version": "1.0.0",
+		"description": "Express serverless API definitions",
+		"license": {
+			"name": "MIT"
+		}
+	},
+	"paths": {
+		"/book/{id}": {
+			"get": {
+				"operationId": "GetBook",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Book"
+						}
+					}
+				},
+				"tags": [
+					"Book"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			},
+			"delete": {
+				"operationId": "DeleteBook",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"status": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Book"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/book": {
+			"get": {
+				"operationId": "ListBooks",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"items": {
+								"$ref": "#/definitions/Book"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"tags": [
+					"Book"
+				],
+				"security": [],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "SaveBook",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"status": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Book"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "book",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Book"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdateBook",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"status": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Book"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "book",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Book"
+						}
+					}
+				]
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"swagger": "2.0",
+	"securityDefinitions": {},
+	"host": "localhost:3000",
+	"schemes": [
+		"http"
+	]
+}
